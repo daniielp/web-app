@@ -7,7 +7,8 @@ import ShopsPage from "./pages/ShopsPage";
 import SearchPage from "./pages/SearchPage";
 import ProfilePage from "./pages/ProfilePage";
 import SiteNavigation from "./components/SiteNavigation";
-import SiteHeader from "./components/SiteHeader";
+
+import SiteHeader from "./components/SiteNavigation";
 
 function App() {
   return (
