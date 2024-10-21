@@ -7,6 +7,28 @@
   pointer-events: none;
 }
 
+
+/* STYLING TIL AdresseDrawer */ 
+ .DrawerComp {
+  margin-left: 24px;
+  width: auto;
+ }
+
+
+ .UseLocation {
+  display: flex;
+  background-color: #14B7A5;
+  justify-content: center;
+  width: 95%;
+  align-self: center;
+  color: white;
+  border-radius: 10px;
+  padding: 2px;
+ }
+
+
+ 
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

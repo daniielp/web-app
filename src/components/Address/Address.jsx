@@ -2,6 +2,7 @@ import React from 'react'
 import {Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger} from "../Drawer"
 import AddressInput from './AddressInput'
 import AddressLocation from './AddressLocation'
+import Slider from '../Slider'
 
 function Address() {
   return (
@@ -15,9 +16,22 @@ function Address() {
                     Lokation
                 </DrawerTitle>
             </DrawerHeader>
-            <div>
-                <AddressLocation />
-                <AddressInput />
+            <div className='DrawerComp'>
+                <div>
+                    <AddressLocation />
+                    <div className='Drawerdivider'>
+                    <hr />
+                    <p>
+                    Eller
+                    </p>
+                    <hr />
+                    <AddressInput />
+                </div>
+                <div>
+                    <h3>Radius</h3>
+                <Slider />
+                </div>
+            </div>
             </div>
         </DrawerContent>
     </Drawer>
