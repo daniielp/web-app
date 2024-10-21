@@ -2,7 +2,7 @@ import React from 'react'
 
 function AddressInput() {
   return (
-    <div>AddressInput</div>
+    <div>Søg efter din adresse ...</div>
   )
 }
 

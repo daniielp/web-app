@@ -2,7 +2,7 @@ import React from 'react'
 
 function AddressLocation() {
   return (
-    <div>AddressLocation</div>
+    <div>Brug min lokation</div>
   )
 }
 
