@@ -1,8 +1,11 @@
 import React from 'react'
+import Address from './Address/Address'
 
 function SiteHeader() {
   return (
-    <div>SiteHeader</div>
+    <div>
+      <Address />
+    </div>
   )
 }
 

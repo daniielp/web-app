@@ -1,5 +1,10 @@
 import React from "react";
-import { Route, Routes, BrowserRouter as Router, Navigate } from "react-router-dom";
+import {
+  Route,
+  Routes,
+  BrowserRouter as Router,
+  Navigate,
+} from "react-router-dom";
 import "./App.css";
 import DiscoverPage from "./pages/DiscoverPage";
 import StorePage from "./pages/StorePage";
@@ -8,13 +13,13 @@ import SearchPage from "./pages/SearchPage";
 import ProfilePage from "./pages/ProfilePage";
 import SiteNavigation from "./components/SiteNavigation";
 
-import SiteHeader from "./components/SiteNavigation";
+import SiteHeader from "./components/SiteHeader";
 
 function App() {
   return (
     <>
-      <SiteHeader />
       <Router>
+        <SiteHeader />
         <Routes>
           <Route path="/" element={<DiscoverPage />} />
           <Route path="/shops/:id" element={<StorePage />} />
@@ -24,8 +29,8 @@ function App() {
           {/* Navigate to frontpage - If the page doesn't exist */}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
+        <SiteNavigation />
       </Router>
-      <SiteNavigation />
     </>
   );
 }
