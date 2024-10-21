@@ -54,7 +54,8 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
+        display: ["Roboto"],
+        body: ["Josefin Sans", ...fontFamily.sans]
       },
       keyframes: {
         "accordion-down": {
