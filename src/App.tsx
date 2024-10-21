@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
+import { Route, Routes, BrowserRouter as Router, Navigate } from "react-router-dom";
 import "./App.css";
 import DiscoverPage from "./pages/DiscoverPage";
 import StorePage from "./pages/StorePage";
@@ -21,7 +21,8 @@ function App() {
           <Route path="/shops" element={<ShopsPage />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/profile" element={<ProfilePage />} />
+          {/* Navigate to frontpage - If the page doesn't exist */}
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Router>
       <SiteNavigation />
