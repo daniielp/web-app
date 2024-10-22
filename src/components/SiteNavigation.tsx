@@ -29,7 +29,7 @@ const menuItems = [
 
 function SiteNavigation() {
   return (
-    <nav className="flex w-full justify-between bg-white absolute bottom-0 p-4">
+    <nav className="flex w-full justify-between bg-white fixed bottom-0 p-4">
       {menuItems.map((item) => (
         <NavLink
           to={item.href}
