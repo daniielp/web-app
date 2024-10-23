@@ -8,7 +8,7 @@ function Address() {
   return (
     <Drawer>
         <DrawerTrigger>
-            <button>HEjsa</button>
+            <button>MyAdress</button>
         </DrawerTrigger>
         <DrawerContent>
             <DrawerHeader>
@@ -19,16 +19,15 @@ function Address() {
             <div className='DrawerComp'>
                 <div>
                     <AddressLocation />
-                    <div className='Drawerdivider'>
-                    <hr />
-                    <p>
-                    Eller
-                    </p>
-                    <hr />
+                        <div className='Drawerdivider'>
+                            
+                            <span>
+                            Eller
+                            </span>
+                            
+                        </div>
                     <AddressInput />
-                </div>
                 <div>
-                    <h3>Radius</h3>
                 <Slider />
                 </div>
             </div>
