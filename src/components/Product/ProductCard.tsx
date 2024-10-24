@@ -50,7 +50,7 @@ function ProductCard({
         </div>
       </DrawerTrigger>
       <DrawerContent>
-        <ProductInformation />
+        <ProductInformation productName={productName} currentPrice={currentPrice} originalPrice={originalPrice} imageUrl={imageUrl} quantity={quantity} {...props} />
       </DrawerContent>
     </Drawer>
   );
