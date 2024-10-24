@@ -88,3 +88,32 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* Styling til StoreCard - Anders*/
+.storeCardHeading {
+  background-color: var(--primary-dark);
+  align-items: center;
+  color: var(--input);
+  justify-content: space-between;
+  padding: 0.5rem 2rem;
+}
+
+.shopInfo {
+  align-items: end;
+}
+
+.shopCardLogo {
+  border-radius: 5rem;
+  object-fit: fill;
+  overflow: hidden;
+}
+
+.shopCardMain {
+  background-color: #EAFAF9;
+  
+}
+
+.shopCardMainContainer {
+  padding: 2rem;
+}
