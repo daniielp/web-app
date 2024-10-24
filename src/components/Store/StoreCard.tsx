@@ -2,8 +2,8 @@
 import React from "react";
 import Typography from "../Typography";
 import { cn } from "../../lib/utils";
-import StoreFavorit from "../Store/StoreFavorit";
-import ProductCard from "../Product/ProductCard";
+import StoreFavorit from "./StoreFavorit";
+import ProductCard, { ProductCardProps } from "../Product/ProductCard";
 
 interface ShopCard {
   shopName: string; // Netto
@@ -11,7 +11,7 @@ interface ShopCard {
   opensAt: string; // 8:30
   closesAt: string; // 20:30
   logoUrl?: string; //https://cdn.sallinggroup.com/
-  products: Product[];
+  products: ProductCardProps[];
   showAmountOnly: boolean; // True - Shows the tekst "10 datovarer tilføjet"
 }
 
@@ -35,11 +35,8 @@ function StorePage({
             <Typography variant="heading">{shopName}</Typography>
             <Typography variant="subHeading">{address}</Typography>
           </div>
-          <div className={cn("flex flex-row gap-1")}>
-            <Typography variant="font-normal">Åben fra</Typography>
-            <Typography variant="font-normal">{opensAt}</Typography>
-            <Typography variant="font-normal">til</Typography>
-            <Typography variant="font-normal">{closesAt}</Typography>
+          <div>
+            <Typography variant="body">Åben fra <span>{opensAt}</span> til <span>{closesAt}</span></Typography>
           </div>
         </div>
         <div>
