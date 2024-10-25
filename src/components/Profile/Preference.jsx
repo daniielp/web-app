@@ -1,26 +1,41 @@
 import React from 'react'
+import Typography from "../Typography"
+import { Switch }  from '../Switch';
+
+/* LAVET AF JAKOB */
+
 
 function Preference() {
   return (
     <div>
     <div className='PrefHeader'>
-        <h3>Præferencer</h3>
-        <p>Hjælp os med at tilpasse dine resultater til dine præferencer.</p>
-        <p className='OBS'>OBS: Dette vil betyde at vi kan finde færre mulige datovarer</p>
+    <Typography variant={'heading'} >Præferencer</Typography>
+    <Typography variant={'body'} >Hjælp os med at tilpasse dine resultater til dine præferencer.</Typography>
+        <p> <span className='OBS'>OBS:</span> Dette vil betyde at vi kan finde færre mulige datovarer</p>
     </div>
     <div>
-        <div className='PrefSwitch'>
-            <h4>Økologi</h4>
-            <p>Når denne er aktiv vil vi kun lede efter økologiske produkter.</p>
+        <div className='PrefSwitch gap-4'>
+            <div>
+            <Typography variant={'subHeading'} >Økologi</Typography>
+            <Typography variant={'caption'} >Når denne er aktiv vil vi kun lede efter økologiske produkter.</Typography>
+            </div>
+            
+            <Switch />
         </div>
         <div className='PrefSwitch'>
-            <h4>Dyrevelfærd</h4>
-            <p>Når denne er aktiv vil vi kun lede efter produkter der tager højde for dyrevelfærd.</p>
-
+            <div>
+            <Typography variant={'subHeading'} >Dyrevelfærd</Typography>
+            <Typography variant={'caption'} >Når denne er aktiv vil vi kun lede efter produkter der tager højde for dyrevelfærd.</Typography>
+            </div>  
+            <p></p>
+            <Switch />
         </div>
         <div className='PrefSwitch'>
-            <h4>Lactose intolerant</h4>
-            <p>Når denne er aktiv viser vi dig ikke produkter med laktose.</p>
+            <div>
+            <Typography variant={'subHeading'} >Lactose Introlerant</Typography>
+        <Typography variant={'caption'} >Når denne er aktiv viser vi dig ikke produkter med laktose.</Typography>
+            </div>
+        <Switch />
         </div>
     </div>
     </div>

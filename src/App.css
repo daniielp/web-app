@@ -8,7 +8,9 @@
 }
 
 
-/* STYLING TIL AdresseDrawer */ 
+
+
+/* STYLING TIL AdresseDrawer  Jakob*/ 
  .DrawerComp {
   margin-left: 24px;
   width: auto;
@@ -56,8 +58,129 @@
   margin-bottom: 10vh;
 }
 
+/* STYLING TIL ProfilePage  Jakob*/ 
 
+.ProfilePage  {
+  margin-left: 24px;
+}
+.ProfileHeader {
+  display: flex;
+  padding-bottom: 2vh;
+  
+}
+
+.PrefHeader {
+  padding-bottom: 4vh;
+}
+
+.PrefSwitch {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 4vh;
+  align-items: center;
+}
+
+
+/* Styling af ProfileFront  Jakob*/
+
+.FrontContainer {
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.NameDescrip {
+  padding-left: 2.5vw;
+}
+
+.NameDescrip h3 {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.NameDescrip p {
+  font-size: small;
+}
  
+/* Styling af Preferences  Jakob*/
+
+.AgentHeader p, .PrefHeader p {
+  font-size: small;
+} 
+
+.OBS {
+  font-weight: 800;
+}
+
+.PrefSwitch  {
+  margin-right: 24px;
+}
+
+/* Styling af SearchAgent  Jakob*/
+.AgentCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #EAFAF9;
+  margin-right: 24px;
+  margin-bottom: 2vh;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.AgentSpec {
+  padding-left: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #134E4A;
+}
+
+.AgentEditor {
+  font-weight: 800;
+  font-size: large;
+  color: #134E4A;
+}
+
+.AgentButton {
+  color: #14B7A5;
+  margin-bottom: 15vh;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem; 
+}
+
+.AgentArrow {
+  display: inline-block;
+  position: relative;
+  width: 10px;
+  height: 10px;
+  margin-left: 5px;
+
+}
+
+.AgentArrow::before,
+.AgentArrow::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  background-color: #14B7A5; 
+  border-radius: 8px;
+}
+
+.AgentArrow::before {
+  transform: rotate(45deg);
+  top: 0;
+  right: 0;
+}
+
+.AgentArrow::after {
+  transform: rotate(-45deg);
+  bottom: 2px;
+  right: 0;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

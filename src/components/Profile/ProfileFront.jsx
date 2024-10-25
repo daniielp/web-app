@@ -1,14 +1,17 @@
 import React from 'react'
+import Typography from "../Typography";
+
 
 function ProfileFront() {
   return (
-    <div>
+    <div className='FrontContainer gap-4 py-4'>
         <img src="/ProfilePic.svg" alt="Profile Picture" />
         <div className='NameDescrip'>
-            <h3>Daniel Pedersen</h3>
-            <p>Ret adgangskode, sikkerhed, personlige oplysninger</p>
+        <Typography variant={'heading'} >Rikke Johansen</Typography>
+        <Typography className='leading-1' variant={'caption'} >Ret adgangskode, sikkerhed, personlige oplysninger</Typography>
+            
         </div>
-        <span className='ProfileArrow'></span>
+        <img className='FrontArrow' src="/Chevron-right.svg" alt="Profile Picture" />
     </div>
   )
 }
