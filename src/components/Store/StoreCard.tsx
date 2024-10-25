@@ -44,7 +44,7 @@ function StorePage({
         </div>
       </header>
       <main className="shopCardMain">
-        <div className="flex overflow-x-auto gap-4 shopCardMainContainer">
+        <div className="flex overflow-x-auto gap-4 p-2">
           <ProductCard
             productName="Kylling"
             currentPrice={22.5}
