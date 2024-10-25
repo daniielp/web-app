@@ -1,6 +1,6 @@
 import React from "react";
 import { Drawer, DrawerContent, DrawerTrigger } from "../Drawer";
-import ProductInformation from "./ProductInformation";
+import ProductInformation from "./ProductInformation.tsx";
 import { cn } from "../../lib/utils";
 import ProductAmount from "./ProductAmount";
 import Typography from "../Typography";
@@ -50,7 +50,7 @@ function ProductCard({
         </div>
       </DrawerTrigger>
       <DrawerContent>
-        <ProductInformation />
+        <ProductInformation productName={productName} currentPrice={currentPrice} originalPrice={originalPrice} imageUrl={imageUrl} quantity={quantity} {...props} />
       </DrawerContent>
     </Drawer>
   );

@@ -213,7 +213,12 @@
 }
 
 
-/* Styling til StoreCard - Anders*/
+/*StoreCard - Anders*/
+.shopCardContainer {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
 .storeCardHeading {
   background-color: var(--primary-dark);
   align-items: center;
@@ -239,4 +244,47 @@
 
 .shopCardMainContainer {
   padding: 2rem;
+}
+
+/* ShopPage - Anders*/
+
+
+
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+.dot-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.dot-navigation {
+  background-color: #F1F5F9;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  width: fit-content;
+  padding: 0.5rem;
+  border-radius: 5rem;
+  margin-block: 1rem;
+}
+
+.dot {
+  height: 20px;
+  width: 20px;
+  margin: 0 2px;
+  background-color: #14B7A5;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: #134E4A;
 }
