@@ -1,8 +1,9 @@
 import { SallingResponse } from "../types";
-
 const SALLING_API_URL = "https://api.sallinggroup.com/v1/food-waste/"
 
 export async function getProducts() {
+    console.log(process.env)
+
     const response = await fetch(
         `${SALLING_API_URL}?zip=8000`,
         {

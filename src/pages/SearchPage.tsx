@@ -20,11 +20,17 @@ const filters = [
 ];
 
 function SearchPage() {
-  const [products, setProducts] = useState<SallingResponse | undefined>();
+  const [products, setProducts] = useState<SallingResponse>([]);
 
   useEffect(() => {
     (async function () {
-      setProducts(await getProducts())
+      try {
+        const res = await getProducts();
+        setProducts(res || []); // Add fallback to empty array if res is null/undefined
+      } catch (error) {
+        console.error('Error fetching products:', error);
+        setProducts([]); // Set empty array on error
+      }
     })();
   }, []);
 
@@ -45,11 +51,11 @@ function SearchPage() {
           defaultValue={filters[0]}
         >
           {filters.map((item, index) => (
-            <ToggleGroupItem value={item}>{item}</ToggleGroupItem>
+            <ToggleGroupItem key={item + index} value={item}>{item}</ToggleGroupItem>
           ))}
         </ToggleGroup>
       </div>
-      {products?.map((p, index) => (
+      {Array.isArray(products) && products?.map((p, index) => (
         <section key={p.store.brand + index} className="px-6 py-4">
           <Typography variant="heading">
             {p.store.brand}{" "}
