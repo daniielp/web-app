@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { Children, PropsWithChildren } from "react";
 import Typography from "../Typography";
 import { cn } from "../../lib/utils";
 import StoreFavorit from "./StoreFavorit";
@@ -23,7 +23,8 @@ function StorePage({
   logoUrl,
   products,
   showAmountOnly,
-}: ShopCard) {
+  children
+}: PropsWithChildren<ShopCard>) {
   return (
     <section className="shopCardContainer">
       <header className={cn("flex flex-row storeCardHeading")}>
@@ -45,27 +46,7 @@ function StorePage({
       </header>
       <main className="shopCardMain">
         <div className="flex overflow-x-auto gap-4 p-2">
-          <ProductCard
-            productName="Kylling"
-            currentPrice={22.5}
-            originalPrice={25}
-            quantity={10}
-            imageUrl="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80"
-          />
-          <ProductCard
-            productName="Kylling"
-            currentPrice={22.5}
-            originalPrice={25}
-            quantity={10}
-            imageUrl="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80"
-          />
-          <ProductCard
-            productName="Kylling"
-            currentPrice={22.5}
-            originalPrice={25}
-            quantity={10}
-            imageUrl="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80"
-          />
+          {children}
         </div>
       </main>
     </section>
