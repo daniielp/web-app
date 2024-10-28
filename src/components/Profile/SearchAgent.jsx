@@ -16,7 +16,7 @@ function SearchAgent() {
       <Typography variant={'subHeading'}>Kylling</Typography>
       <div><Typography variant={'body'}>Økologisk</Typography></div>
       </div>
-            <button className='AgentEditor'>...</button>
+            <button className='AgentEditor'><img src="../AgentDots.svg" alt="" /></button>
     </div>
     <div className='AgentCard'>
       <div className='AgentSpec gap-4'>
@@ -26,7 +26,7 @@ function SearchAgent() {
         <Typography variant={'body'}>Skovmandens Solsikke rugbrød</Typography>
       </div>
 
-            <button className='AgentEditor'>...</button>
+            <button className='AgentEditor'><img src="../AgentDots.svg" alt="" /></button>
     </div>
     <Typography variant={'subHeading'}>
     <button className='AgentButton'>
