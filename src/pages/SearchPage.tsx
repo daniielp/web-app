@@ -11,7 +11,7 @@ const filters = [
   "Alle",
   "Kød",
   "Fisk",
-  "Majeri",
+  "Mejeri",
   "Frugt & Grønt",
   "Frost",
   "Brød",
@@ -57,7 +57,7 @@ function SearchPage() {
       </div>
       {Array.isArray(products) && products?.map((p, index) => (
         <section key={p.store.brand + index} className="px-6 py-4">
-          <Typography variant="heading">
+          <Typography className="first-letter:uppercase" variant="heading">
             {p.store.brand}{" "}
             <span className="font-normal">- {p.store.address.street}</span>
           </Typography>

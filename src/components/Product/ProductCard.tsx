@@ -41,7 +41,7 @@ function ProductCard({
             />
           </div>
           <div>
-            <Typography variant="body">{productName}</Typography>
+            <Typography className="break-words" variant="body">{productName}</Typography>
             <ProductPrice
               currentPrice={currentPrice}
               originalPrice={originalPrice}
