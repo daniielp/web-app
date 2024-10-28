@@ -1,6 +1,6 @@
 import React from "react";
 import { Drawer, DrawerContent, DrawerTrigger } from "../Drawer";
-import ProductInformation from "./ProductInformation.tsx";
+import ProductInformation from "./ProductInformation";
 import { cn } from "../../lib/utils";
 import ProductAmount from "./ProductAmount";
 import Typography from "../Typography";
