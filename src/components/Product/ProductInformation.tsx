@@ -22,7 +22,7 @@ function ProductInformation({
         />
         <section className="col-span-2">
           <div className="py-2">
-            <Typography className="font-normal" variant="heading">
+            <Typography className="font-normal first-letter:uppercase lowercase" variant="heading">
               {productName}
             </Typography>
             <div className={cn("flex gap-2 items-center")}>
