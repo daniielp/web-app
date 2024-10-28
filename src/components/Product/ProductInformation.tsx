@@ -16,7 +16,7 @@ function ProductInformation({
     <div className="py-6">
       <div className="grid grid-cols-3 px-6 gap-4">
         <img
-          className="rounded-lg col-span-1 h-full object-cover"
+          className="rounded-lg col-span-1 h-full object-contain aspect-square"
           alt={productName}
           src={imageUrl}
         />
