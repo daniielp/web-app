@@ -6,7 +6,7 @@ function Radius() {
     return (
         <div>
             <Typography className='gap-4 pb-5' variant={'heading'}>Radius</Typography>
-            <Slider className='pb-8 w-80'/>
+            <Slider className='pb-8 w-full pr-4'/>
         </div>
     );
 }

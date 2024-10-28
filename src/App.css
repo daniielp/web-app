@@ -113,6 +113,8 @@
 }
 
 .PrefSwitch  {
+  display: flex;
+  justify-content: space-between;
   margin-right: 24px;
 }
 
@@ -146,9 +148,11 @@
 .AgentButton {
   color: #14B7A5;
   margin-bottom: 15vh;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 0.5rem; 
+  justify-content: center;
+  gap: 0.5rem;
+  line-height: 1; 
 }
 
 .AgentArrow {
