@@ -1,4 +1,3 @@
-
 import React, { Children, PropsWithChildren } from "react";
 import Typography from "../Typography";
 import { cn } from "../../lib/utils";
@@ -23,8 +22,7 @@ function StorePage({
   logoUrl,
   products,
   showAmountOnly,
-  children
-}: PropsWithChildren<ShopCard>) {
+}: ShopCard) {
   return (
     <section className="shopCardContainer">
       <header className={cn("flex flex-row storeCardHeading")}>
@@ -37,7 +35,9 @@ function StorePage({
             <Typography variant="subHeading">{address}</Typography>
           </div>
           <div>
-            <Typography variant="body">Åben fra <span>{opensAt}</span> til <span>{closesAt}</span></Typography>
+            <Typography variant="body">
+              Åben fra <span>{opensAt}</span> til <span>{closesAt}</span>
+            </Typography>
           </div>
         </div>
         <div>
@@ -46,7 +46,16 @@ function StorePage({
       </header>
       <main className="shopCardMain">
         <div className="flex overflow-x-auto gap-4 p-2">
-          {children}
+          {!showAmountOnly &&
+            products.length > 0 &&
+            products.map((product) => <ProductCard {...product} />)}
+          {showAmountOnly && products.length > 0 && (
+            <div className="flex p-4">
+              <Typography variant="subHeading">
+                {products.length} <span className="font-normal">datovarer tilføjet</span> 
+              </Typography>
+            </div>
+          )}
         </div>
       </main>
     </section>
@@ -54,7 +63,6 @@ function StorePage({
 }
 
 export default StorePage;
-
 
 /*
 import React from "react";
