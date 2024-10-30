@@ -12,9 +12,10 @@ interface ShopCardProps extends React.InputHTMLAttributes<HTMLDivElement>  {
   closesAt: string;
   showBackButten?: boolean
   showFavoritButten?: boolean
+
 }
 
-function ShopCard({ shopName, shopAddress, opensAt, closesAt, className, showBackButten=false, showFavoritButten=false,  ...props }: ShopCardProps) {
+function ShopCard({ shopName, shopAddress, opensAt, closesAt, className, showBackButten=false, showFavoritButten=false, ...props }: ShopCardProps) {
   return (
     <div className={cn("bg-primary-dark text-white min-h-32 w-full flex flex-col items-start justify-end p-4 rounded-2xl relative", className)} {...props}>
       <Typography variant="heading">
