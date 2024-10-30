@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import ShopCard from "../components/Store/StoreCard";
+import StoreCard from "../components/Store/StoreCard"; // Changed here
 import EmptyFavorites from "../components/Store/EmptyFavorites";
 import Typography from "../components/Typography";
 import { getProducts } from "../lib/api/salling";
@@ -33,7 +33,7 @@ function ShopsPage() {
       <div className="slideshow-container">
         {favoriteStores.length > 0 ? (
           favoriteStores.map(({ store, clearances }) => (
-            <ShopCard
+            <StoreCard // Changed here
               key={store.address.street}
               shopName={store.brand}
               address={store.address.street}
@@ -58,7 +58,7 @@ function ShopsPage() {
       </div>
       <Typography variant="heading">Forslåede Butikker</Typography>
       {products?.map(({ store, clearances }) => (
-        <ShopCard
+        <StoreCard // Changed here
           key={store.address.street}
           shopName={store.brand}
           address={store.address.street}
