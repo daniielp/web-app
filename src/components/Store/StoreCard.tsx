@@ -4,7 +4,7 @@ import { cn } from "../../lib/utils";
 import StoreFavorit from "./StoreFavorit";
 import ProductCard, { ProductCardProps } from "../Product/ProductCard";
 
-interface ShopCard {
+interface ShopCardProps {
   shopName: string;
   address: string;
   opensAt: string;
@@ -16,7 +16,7 @@ interface ShopCard {
   onToggleFavorite: () => void;
 }
 
-function StorePage({
+function StoreCard({
   shopName,
   address,
   opensAt,
@@ -26,27 +26,27 @@ function StorePage({
   showAmountOnly,
   isFavorite,
   onToggleFavorite,
-}: ShopCard) {
+}: ShopCardProps) {
   return (
     <section className="shopCardContainer mb-8">
       <header className={cn("flex flex-row storeCardHeading")}>
         <div className={cn("w-[3rem] shopCardLogo")}>
-        <Link
-              to={{
-                pathname: `/store/${encodeURIComponent(shopName)}`,
-                state: {
-                  shopName,
-                  address,
-                  opensAt,
-                  closesAt,
-                  logoUrl,
-                  products,
-                  showAmountOnly,
-                  isFavorite,
-                },
-              }}
-            >
-          <img src={logoUrl} alt="butik-logo" />
+          <Link
+            to={{
+              pathname: `/store/${encodeURIComponent(shopName)}`,
+            }}
+            state={{
+              shopName,
+              address,
+              opensAt,
+              closesAt,
+              logoUrl,
+              products,
+              showAmountOnly,
+              isFavorite,
+            }}
+          >
+            <img src={logoUrl} alt="butik-logo" />
           </Link>
         </div>
         <div className={cn("flex flex-col")}>
@@ -54,60 +54,39 @@ function StorePage({
             <Link
               to={{
                 pathname: `/store/${encodeURIComponent(shopName)}`,
-                state: {
-                  shopName,
-                  address,
-                  opensAt,
-                  closesAt,
-                  logoUrl,
-                  products,
-                  showAmountOnly,
-                  isFavorite,
-                },
+              }}
+              state={{
+                shopName,
+                address,
+                opensAt,
+                closesAt,
+                logoUrl,
+                products,
+                showAmountOnly,
+                isFavorite,
               }}
             >
               <Typography variant="heading" className="first-letter:uppercase">{shopName}</Typography>
-            </Link>
-            <Link
-              to={{
-                pathname: `/store/${encodeURIComponent(shopName)}`,
-                state: {
-                  shopName,
-                  address,
-                  opensAt,
-                  closesAt,
-                  logoUrl,
-                  products,
-                  showAmountOnly,
-                  isFavorite,
-                },
-              }}
-            >
+           
             <Typography variant="subHeading">{address}</Typography>
             </Link>
           </div>
-          <div>
-            <Typography variant="body">
-              Åben fra <span>{opensAt}</span> til <span>{closesAt}</span>
-            </Typography>
-          </div>
+          <Typography variant="body">
+            Åben fra <span>{opensAt}</span> til <span>{closesAt}</span>
+          </Typography>
         </div>
-        <div>
-          <StoreFavorit 
-            isFavorite={isFavorite} 
-            onToggle={onToggleFavorite}
-          />
-        </div>
+        <StoreFavorit isFavorite={isFavorite} onToggle={onToggleFavorite} />
       </header>
       <main className="shopCardMain">
         <div className="flex overflow-x-auto gap-4 p-2">
           {!showAmountOnly &&
-            products.length > 0 &&
-            products.map((product) => <ProductCard key={product.productName} {...product} />)}
-          {showAmountOnly && products.length > 0 && (
+            products.map((product) => (
+              <ProductCard key={product.productName} {...product} />
+            ))}
+          {showAmountOnly && (
             <div className="flex p-4">
               <Typography variant="subHeading">
-                {products.length} <span className="font-normal">datovarer tilføjet</span> 
+                {products.length} <span className="font-normal">datovarer tilføjet</span>
               </Typography>
             </div>
           )}
@@ -117,7 +96,8 @@ function StorePage({
   );
 }
 
-export default StorePage;
+export default StoreCard;
+
 
 
 
