@@ -21,7 +21,7 @@ const filters = [
 
 // Define keywords for each category
 const categoryKeywords = {
-  "Kød": [
+    "Kød": [
     "kød", "hakket", "bøf", "mørbrad", "culotte", "flæsk", "kylling", "pølser", "bacon", "skinke", "frikadeller",
     "ribben", "oksekød", "svinekød", "lammekød", "kalvekød", "and", "vildt", "kalkun", "fars", "steak",
     "entrecote", "hjerte", "lever", "kotelet", "parmaskinke", "salami", "pepperoni", "pancetta", "spareribs",
@@ -104,6 +104,7 @@ function SearchPage() {
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
+    setSelectedCategory("Alle");
   };
 
   const handleCategoryChange = (value: string) => {

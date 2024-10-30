@@ -23,6 +23,7 @@ function App() {
         <Routes>
           <Route path="/" element={<DiscoverPage />} />
           <Route path="/shops/:id" element={<StorePage />} />
+          <Route path="/store/:shopName" element={<StorePage />} />
           <Route path="/shops" element={<ShopsPage />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/profile" element={<ProfilePage />} />
