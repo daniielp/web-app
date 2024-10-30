@@ -66,7 +66,7 @@ function StorePage({
                 },
               }}
             >
-              <Typography variant="heading">{shopName}</Typography>
+              <Typography variant="heading" className="first-letter:uppercase">{shopName}</Typography>
             </Link>
             <Link
               to={{
