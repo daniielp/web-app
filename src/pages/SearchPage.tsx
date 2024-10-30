@@ -19,10 +19,48 @@ const filters = [
   "Snacks",
 ];
 
+// Define keywords for each category
+const categoryKeywords = {
+  "Kød": [
+    "kød", "hakket", "bøf", "mørbrad", "culotte", "flæsk", "kylling", "pølser", "bacon", "skinke", "frikadeller",
+    "ribben", "oksekød", "svinekød", "lammekød", "kalvekød", "and", "vildt", "kalkun", "fars", "steak",
+    "entrecote", "hjerte", "lever", "kotelet", "parmaskinke", "salami", "pepperoni", "pancetta", "spareribs",
+    "oksehaler", "schnitzel", "gyros", "meatballs", "paté", "fjerkræ", "tatar", "pulled pork", "oksefilet"
+  ],
+  "Fisk": ["fisk", "laks", "tun", "reje", "torsk", "sild", "makrel", "ørred", "krabbe", "blæksprutte"],
+  "Mejeri": ["mælk", "ost", "yoghurt", "skyr", "fløde", "smør", "cremefraiche", "hytteost", "kefir", "kvark"],
+  "Frugt & Grønt": ["æble", "banan", "tomat", "agurk", "salat", "løg", "kartoffel", "citron", "appelsin", "peberfrugt", "broccoli", "spinat", "jordbær", "gulerod", "vindrue", "pære", "blomkål", "avocado", "kiwi", "melon",
+  "fersken", "blomme", "mango", "nektarin", "squash", "aubergine", "hvidløg", "porre", "radise",
+  "rødbede", "selleri", "majs", "ananas", "lime", "hindbær", "brombær", "granatæble", "cantaloupe", 
+  "honningmelon", "cherrytomat", "fennikel", "ærter", "champignon", "græskar", "rucola", "persille", 
+  "dild", "koriander", "forårsløg", "clementin", "rosenkål", "kokosnød", "kirsebær", "tranebær"],
+  "Frost": ["frost", "frossen", "is", "pizza", "færdigret", "pommes", "grøntsagsblanding", "bær", "fiskefileter"],
+  "Brød": ["brød", "rugbrød", "boller", "kage", "croissant", "baguette", "toast", "knækbrød", "pitabrød"],
+  "None Food": ["shampoo", "sæbe", "tandbørste", "rengøring", "vaskemiddel", "toiletpapir", "køkkenrulle", "deodorant", "barberskum"],
+  "Snacks": ["chips", "chokolade", "slik", "nødder", "popcorn", "kiks", "lakrids", "vingummi", "mandler"]
+};
+
+// Function to determine product category based on description
+function determineCategory(description: string): string {
+  // Convert description to lowercase for case-insensitive matching
+  const lowerDesc = description.toLowerCase();
+  
+  // Check each category's keywords
+  for (const [category, keywords] of Object.entries(categoryKeywords)) {
+    if (keywords.some(keyword => lowerDesc.includes(keyword))) {
+      return category;
+    }
+  }
+  
+  // If no category matches, return empty string
+  return "";
+}
+
 function SearchPage() {
   const [products, setProducts] = useState<SallingResponse>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProducts, setFilteredProducts] = useState<SallingResponse>([]);
+  const [selectedCategory, setSelectedCategory] = useState("Alle");
 
   useEffect(() => {
     (async function () {
@@ -36,22 +74,40 @@ function SearchPage() {
     })();
   }, []);
 
- /* FILTER FUNKTION AF JAKOB :) */ 
   useEffect(() => {
     if (!Array.isArray(products)) return;
 
-    const filtered = products.map(store => ({
-      ...store,
-      clearances: store.clearances.filter(({ product }) =>
-        product.description.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    })).filter(store => store.clearances.length > 0);
+    let filtered = products;
+
+    // Filter by category first (if not "Alle")
+    if (selectedCategory !== "Alle") {
+      filtered = filtered.map(store => ({
+        ...store,
+        clearances: store.clearances.filter(({ product }) => 
+          determineCategory(product.description) === selectedCategory
+        )
+      })).filter(store => store.clearances.length > 0);
+    }
+
+    // Then apply search filter
+    if (searchQuery) {
+      filtered = filtered.map(store => ({
+        ...store,
+        clearances: store.clearances.filter(({ product }) =>
+          product.description.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+      })).filter(store => store.clearances.length > 0);
+    }
 
     setFilteredProducts(filtered);
-  }, [products, searchQuery]);
+  }, [products, searchQuery, selectedCategory]);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
+  };
+
+  const handleCategoryChange = (value: string) => {
+    setSelectedCategory(value);
   };
 
   return (
@@ -70,6 +126,7 @@ function SearchPage() {
           className="grid grid-cols-3 gap-2"
           type="single"
           defaultValue={filters[0]}
+          onValueChange={handleCategoryChange}
         >
           {filters.map((item, index) => (
             <ToggleGroupItem key={item + index} value={item}>{item}</ToggleGroupItem>
