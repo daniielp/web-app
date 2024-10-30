@@ -1,5 +1,4 @@
-
-import React from "react";
+import React, { Children, PropsWithChildren } from "react";
 import Typography from "../Typography";
 import { cn } from "../../lib/utils";
 import StoreFavorit from "./StoreFavorit";
@@ -36,7 +35,9 @@ function StorePage({
             <Typography variant="subHeading">{address}</Typography>
           </div>
           <div>
-            <Typography variant="body">Åben fra <span>{opensAt}</span> til <span>{closesAt}</span></Typography>
+            <Typography variant="body">
+              Åben fra <span>{opensAt}</span> til <span>{closesAt}</span>
+            </Typography>
           </div>
         </div>
         <div>
@@ -45,27 +46,16 @@ function StorePage({
       </header>
       <main className="shopCardMain">
         <div className="flex overflow-x-auto gap-4 p-2">
-          <ProductCard
-            productName="Kylling"
-            currentPrice={22.5}
-            originalPrice={25}
-            quantity={10}
-            imageUrl="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80"
-          />
-          <ProductCard
-            productName="Kylling"
-            currentPrice={22.5}
-            originalPrice={25}
-            quantity={10}
-            imageUrl="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80"
-          />
-          <ProductCard
-            productName="Kylling"
-            currentPrice={22.5}
-            originalPrice={25}
-            quantity={10}
-            imageUrl="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80"
-          />
+          {!showAmountOnly &&
+            products.length > 0 &&
+            products.map((product) => <ProductCard {...product} />)}
+          {showAmountOnly && products.length > 0 && (
+            <div className="flex p-4">
+              <Typography variant="subHeading">
+                {products.length} <span className="font-normal">datovarer tilføjet</span> 
+              </Typography>
+            </div>
+          )}
         </div>
       </main>
     </section>
@@ -73,7 +63,6 @@ function StorePage({
 }
 
 export default StorePage;
-
 
 /*
 import React from "react";
