@@ -34,10 +34,10 @@ function StorePage({
         </div>
         <div className={cn("flex flex-col")}>
           <div className={cn("flex flex-row gap-1 shopInfo ")}>
-            <Typography variant="heading">{shopName}</Typography>
+            <Typography variant="heading" className="first-letter:uppercase">{shopName}</Typography>
             <Typography variant="subHeading">{address}</Typography>
           </div>
-          <div>
+          <div className="flex">
             <Typography variant="body">
               Åben fra <span>{opensAt}</span> til <span>{closesAt}</span>
             </Typography>
