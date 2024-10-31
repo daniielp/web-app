@@ -15,7 +15,7 @@ interface ShopCard {
   onToggleFavorite: () => void
 }
 
-function StorePage({
+function StoreCard({
   shopName,
   address,
   opensAt,
@@ -27,7 +27,7 @@ function StorePage({
   onToggleFavorite
 }: ShopCard) {
   return (
-    <section className="shopCardContainer">
+    <section className="shopCardContainer mb-8">
       <header className={cn("flex flex-row storeCardHeading")}>
         <div className={cn("w-[3rem] shopCardLogo")}>
           <img src={logoUrl} alt="butik-logo" />
@@ -65,7 +65,7 @@ function StorePage({
   );
 }
 
-export default StorePage;
+export default StoreCard;
 
 /*
 import React from "react";
