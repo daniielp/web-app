@@ -1,14 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function StoreFavorit() {
-  const [isLiked, setIsLiked] = useState(false);
-  const likeToggle = () => {
-    setIsLiked(prevIsLiked => !prevIsLiked);
-  };
-
+function StoreFavorit({ isFavorite, onToggle }) {
   return (
-    <div className='likeToggleContainer' onClick={likeToggle}>
-      {isLiked ? (
+    <div className='likeToggleContainer' onClick={onToggle}>
+      {isFavorite ? (
         <img src="/heart-filled.svg" alt="Heart-liked" />
       ) : (
         <img src="/heart.svg" alt="Heart-like" />
