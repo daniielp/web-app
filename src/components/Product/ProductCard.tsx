@@ -5,25 +5,24 @@ import { cn } from "../../lib/utils";
 import ProductAmount from "./ProductAmount";
 import Typography from "../Typography";
 import ProductPrice from "./ProductPrice";
+import { SallingResponse } from "../../lib/types";
 
 export interface ProductCardProps
   extends React.InputHTMLAttributes<HTMLDivElement> {
-  productName: string;
-  currentPrice: number;
-  originalPrice?: number;
-  quantity: number;
-  imageUrl: string;
+  product: SallingResponse[number]["clearances"][number]
 }
 
 function ProductCard({
-  productName,
-  currentPrice,
-  originalPrice,
-  quantity,
-  imageUrl,
+  product,
   className,
   ...props
 }: ProductCardProps) {
+  const imageUrl = product.product.image
+  const quantity = product.offer.stock
+  const productName = product.product.description
+  const currentPrice = product.offer.newPrice
+  const originalPrice = product.offer.originalPrice
+
   return (
     <Drawer>
       <DrawerTrigger asChild>
@@ -50,7 +49,7 @@ function ProductCard({
         </div>
       </DrawerTrigger>
       <DrawerContent>
-        <ProductInformation productName={productName} currentPrice={currentPrice} originalPrice={originalPrice} imageUrl={imageUrl} quantity={quantity} {...props} />
+        <ProductInformation product={product} {...props} />
       </DrawerContent>
     </Drawer>
   );
