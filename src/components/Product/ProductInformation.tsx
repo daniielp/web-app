@@ -6,9 +6,9 @@ import { ClockIcon, HourglassIcon, InfoIcon } from "lucide-react";
 import ShopCard from "../Store/ShopCard";
 
 function ProductInformation({
-  product
+  product,
 }: ProductCardProps) {
-  const imageUrl = product.product.image
+   const imageUrl = (product.product.image?.endsWith("image") ? "/food-icon.svg" :  product.product.image ) ?? "/food-icon.svg"
   const productName = product.product.description
   const currentPrice = product.offer.newPrice
   const originalPrice = product.offer.originalPrice

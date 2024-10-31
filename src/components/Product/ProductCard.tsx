@@ -17,7 +17,7 @@ function ProductCard({
   className,
   ...props
 }: ProductCardProps) {
-  const imageUrl = product.product.image
+  const imageUrl = (product.product.image?.endsWith("image") ? "/food-icon.svg" :  product.product.image ) ?? "/food-icon.svg"
   const quantity = product.offer.stock
   const productName = product.product.description
   const currentPrice = product.offer.newPrice
