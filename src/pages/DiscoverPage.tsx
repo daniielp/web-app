@@ -32,8 +32,8 @@ export default function DiscoverPage() {
             }}
           >
             <ShopCard
-              shopName={store.brand}
-              shopAddress={store.address.street}
+              shopName={products[currentIndex].store.brand}
+              shopAddress={products[currentIndex].store.address.street}
               opensAt={"12:00"}
               closesAt={"24:00"}
             />
@@ -41,17 +41,20 @@ export default function DiscoverPage() {
         ))}
 
         <div className="dot-container">
-          <div className="dot-navigation">
+          <div className="dot-navigation flex justify-center gap-2">
             {products.map((_, index) => (
               <span
                 key={index}
-                className={`dot ${currentIndex === index ? "active" : ""}`}
+                className={`dot inline-block w-3 h-3 rounded-full cursor-pointer transition-all duration-300 ${
+                  currentIndex === index ? "bg-primary-dark" : "#14B7A5"
+                }`}
                 onClick={() => setCurrentIndex(index)}
               ></span>
             ))}
           </div>
         </div>
       </div>
+
       <Typography variant="heading">Her sparer du mest</Typography>
       <div>
         <div className="flex overflow-x-auto gap-4">
