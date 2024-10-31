@@ -13,7 +13,7 @@ function ProfilePage() {
     <div className='ProfilePage'>
       
       <Input className="pl-8 w-11/12" placeholder="Søg..." />
-      <SearchIcon className="absolute top-8 left-8 pointer-events-none text-primary " />
+      <SearchIcon className="absolute top-12 left-8 pointer-events-none text-primary " />
       <ProfileFront />
       <Radius />
       <Preference />

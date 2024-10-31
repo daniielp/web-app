@@ -19,8 +19,13 @@ function Address() {
 
   return (
     <Drawer>
-      <DrawerTrigger>
-        <button>{currentAddress.tekst ?? "Nuværende lokation"}</button>
+      <DrawerTrigger className="flex flex-row gap-1 p-2 text-teal-950 mt-1 z-10">
+        <img src="/navigation.svg" alt="Navigation icon" className="w-4 h-4" />
+      <Typography variant={"body"}>
+        {currentAddress.tekst ?? "Nuværende lokation"}
+      </Typography>  
+      <img src="/chevron-down.svg" alt="click me" className="w-4 h-4" />
+      <img src="/bell-dot.svg" alt="Notification icon" className="w-6 h-6 absolute top-2 right-6" />
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>

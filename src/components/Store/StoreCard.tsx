@@ -28,7 +28,7 @@ function StoreCard({
   onToggleFavorite,
 }: ShopCard) {
   return (
-    <section className="shopCardContainer">
+    <section className="shopCardContainer mb-8">
       <header className={cn("flex flex-row relative storeCardHeading")}>
         <Link
           className="absolute inset-0"
