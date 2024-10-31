@@ -1,4 +1,3 @@
-import React, { Children, PropsWithChildren } from "react";
 import Typography from "../Typography";
 import { cn } from "../../lib/utils";
 import StoreFavorit from "./StoreFavorit";
