@@ -52,7 +52,7 @@ function ShopsPage() {
     <div className="p-6">
       <Typography variant="heading">Mine Butikker</Typography>
       <div className="slideshow-container relative">
-        {favoriteStores.length > 0 ? (
+        {(favoriteStores.length > 0 && favoriteStores[currentFavoriteIndex]) ? (
           <>
             <StoreCard
               key={favoriteStores[currentFavoriteIndex].store.address.street}
