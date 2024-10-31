@@ -11,6 +11,8 @@ interface ShopCard {
   logoUrl?: string; //https://cdn.sallinggroup.com/
   products: ProductCardProps[];
   showAmountOnly: boolean; // True - Shows the tekst "10 datovarer tilføjet"
+  isFavorite: boolean;
+  onToggleFavorite: () => void
 }
 
 function StorePage({
@@ -21,6 +23,8 @@ function StorePage({
   logoUrl,
   products,
   showAmountOnly,
+  isFavorite,
+  onToggleFavorite
 }: ShopCard) {
   return (
     <section className="shopCardContainer">
@@ -40,14 +44,14 @@ function StorePage({
           </div>
         </div>
         <div>
-          <StoreFavorit></StoreFavorit>
+          <StoreFavorit isFavorite={isFavorite} onToggle={onToggleFavorite}></StoreFavorit>
         </div>
       </header>
       <main className="shopCardMain">
         <div className="flex overflow-x-auto gap-4 p-2">
           {!showAmountOnly &&
             products.length > 0 &&
-            products.map((product) => <ProductCard {...product} />)}
+            products.map((product) => <ProductCard key={product.id} {...product} />)}
           {showAmountOnly && products.length > 0 && (
             <div className="flex p-4">
               <Typography variant="subHeading">

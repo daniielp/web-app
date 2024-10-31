@@ -7,13 +7,13 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import DiscoverPage from "./pages/DiscoverPage";
-import StorePage from "./pages/StorePage";
 import ShopsPage from "./pages/ShopsPage";
 import SearchPage from "./pages/SearchPage";
 import ProfilePage from "./pages/ProfilePage";
 import SiteNavigation from "./components/SiteNavigation";
 
 import SiteHeader from "./components/SiteHeader";
+import StorePage from "./pages/StorePage";
 
 function App() {
   return (
