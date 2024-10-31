@@ -228,7 +228,7 @@
   align-items: center;
   color: var(--input);
   justify-content: space-between;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.5rem;
 }
 
 .shopInfo {
@@ -277,8 +277,8 @@
 }
 
 .dot {
-  height: 20px;
-  width: 20px;
+  height: 30px;
+  width: 30px;
   margin: 0 2px;
   background-color: #14B7A5;
   border-radius: 50%;

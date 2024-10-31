@@ -1,67 +1,59 @@
 import Typography from "../Typography";
-import { cn } from "../../lib/utils";
+import { cn, getLogoUrl } from "../../lib/utils";
 import StoreFavorit from "./StoreFavorit";
 import ProductCard, { ProductCardProps } from "../Product/ProductCard";
 import { Link } from "react-router-dom";
+import { SallingResponse } from "../../lib/types";
+import { useStore } from "../../stores/useStore";
 
 interface ShopCard {
-  shopName: string; // Netto
-  address: string; //  Frederiks allé
-  opensAt: string; // 8:30
-  closesAt: string; // 20:30
+  store: SallingResponse[number]["store"];
+
   logoUrl?: string; //https://cdn.sallinggroup.com/
-  products: ProductCardProps[];
+  products: SallingResponse[number]["clearances"];
   showAmountOnly: boolean; // True - Shows the tekst "10 datovarer tilføjet"
   isFavorite: boolean;
   onToggleFavorite: () => void;
 }
 
 function StoreCard({
-  shopName,
-  address,
-  opensAt,
-  closesAt,
-  logoUrl,
+  store,
   products,
   showAmountOnly,
   isFavorite,
   onToggleFavorite,
 }: ShopCard) {
+  const { setCurrentStore, setProducts } = useStore();
+
   return (
     <section className="shopCardContainer mb-8">
-      <header className={cn("flex flex-row relative storeCardHeading")}>
+      <header className="flex flex-row relative  storeCardHeading">
         <Link
-          className="absolute inset-0"
-          to={{
-            pathname: `/store/${encodeURIComponent(address)}`,
+          className="flex flex-row relative gap-2 storeCardHeading"
+          onClick={() => {
+            setCurrentStore(store);
+            setProducts(products);
           }}
-          state={{
-            shopName,
-            address,
-            opensAt,
-            closesAt,
-            logoUrl,
-            products,
-            showAmountOnly,
-            isFavorite,
+          to={{
+            pathname: `/store/${encodeURIComponent(store.brand)}`,
           }}
         >
-          <span className="sr-only">{shopName}</span>{" "}
-        </Link>
-        <div className={cn("w-[3rem] shopCardLogo")}>
-          <img src={logoUrl} alt="butik-logo" />
-        </div>
-        <div className={cn("flex flex-col")}>
-          <div className={cn("flex flex-row gap-1 shopInfo ")}>
-            <Typography variant="heading">{shopName}</Typography>
-            <Typography variant="subHeading">{address}</Typography>
+          <div className={cn("w-[3rem] shopCardLogo")}>
+            <img src={getLogoUrl(store.brand)} alt="butik-logo" />
           </div>
-          <div>
-            <Typography variant="body">
-              Åben fra <span>{opensAt}</span> til <span>{closesAt}</span>
+          <div className={cn("flex flex-col")}>
+            <div className="flex flex-row gap-1 flex-wrap items-center">
+              <Typography className="first-letter:capitalize" variant="heading">{store.brand}</Typography>
+              <Typography className="font-normal" variant="subHeading">
+                - {store.address.street}
+              </Typography>
+            </div>
+
+            <Typography className="text-left" variant="body">
+              Åben fra <span>{"8:00"}</span> til <span>{"22:00"}</span>
             </Typography>
           </div>
-        </div>
+        </Link>
         <div>
           <StoreFavorit
             isFavorite={isFavorite}
@@ -74,7 +66,7 @@ function StoreCard({
           {!showAmountOnly &&
             products.length > 0 &&
             products.map((product) => (
-              <ProductCard key={product.id} {...product} />
+              <ProductCard key={product.product.ean} product={product} />
             ))}
           {showAmountOnly && products.length > 0 && (
             <div className="flex p-4">

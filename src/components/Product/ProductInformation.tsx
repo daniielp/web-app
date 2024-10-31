@@ -6,12 +6,13 @@ import { ClockIcon, HourglassIcon, InfoIcon } from "lucide-react";
 import ShopCard from "../Store/ShopCard";
 
 function ProductInformation({
-  productName,
-  currentPrice,
-  originalPrice,
-  imageUrl,
-  quantity,
+  product
 }: ProductCardProps) {
+  const imageUrl = product.product.image
+  const productName = product.product.description
+  const currentPrice = product.offer.newPrice
+  const originalPrice = product.offer.originalPrice
+
   return (
     <div className="py-6">
       <div className="grid grid-cols-3 px-6 gap-4">

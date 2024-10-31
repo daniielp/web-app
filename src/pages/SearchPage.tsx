@@ -6,6 +6,8 @@ import { SearchIcon } from "lucide-react";
 import ProductCard from "../components/Product/ProductCard";
 import { SallingResponse } from "../lib/types";
 import { getProducts } from "../lib/api/salling";
+import { categoryKeywords } from "../lib/keywords/category-keywords";
+import { determineCategory } from "../lib/utils";
 
 const filters = [
   "Alle",
@@ -19,42 +21,6 @@ const filters = [
   "Snacks",
 ];
 
-// Define keywords for each category
-const categoryKeywords = {
-    "Kød": [
-    "kød", "hakket", "bøf", "mørbrad", "culotte", "flæsk", "kylling", "pølser", "bacon", "skinke", "frikadeller",
-    "ribben", "oksekød", "svinekød", "lammekød", "kalvekød", "and", "vildt", "kalkun", "fars", "steak",
-    "entrecote", "hjerte", "lever", "kotelet", "parmaskinke", "salami", "pepperoni", "pancetta", "spareribs",
-    "oksehaler", "schnitzel", "gyros", "meatballs", "paté", "fjerkræ", "tatar", "pulled pork", "oksefilet"
-  ],
-  "Fisk": ["fisk", "laks", "tun", "reje", "torsk", "sild", "makrel", "ørred", "krabbe", "blæksprutte"],
-  "Mejeri": ["mælk", "ost", "yoghurt", "skyr", "fløde", "smør", "cremefraiche", "hytteost", "kefir", "kvark"],
-  "Frugt & Grønt": ["æble", "banan", "tomat", "agurk", "salat", "løg", "kartoffel", "citron", "appelsin", "peberfrugt", "broccoli", "spinat", "jordbær", "gulerod", "vindrue", "pære", "blomkål", "avocado", "kiwi", "melon",
-  "fersken", "blomme", "mango", "nektarin", "squash", "aubergine", "hvidløg", "porre", "radise",
-  "rødbede", "selleri", "majs", "ananas", "lime", "hindbær", "brombær", "granatæble", "cantaloupe", 
-  "honningmelon", "cherrytomat", "fennikel", "ærter", "champignon", "græskar", "rucola", "persille", 
-  "dild", "koriander", "forårsløg", "clementin", "rosenkål", "kokosnød", "kirsebær", "tranebær"],
-  "Frost": ["frost", "frossen", "is", "pizza", "færdigret", "pommes", "grøntsagsblanding", "bær", "fiskefileter"],
-  "Brød": ["brød", "rugbrød", "boller", "kage", "croissant", "baguette", "toast", "knækbrød", "pitabrød"],
-  "None Food": ["shampoo", "sæbe", "tandbørste", "rengøring", "vaskemiddel", "toiletpapir", "køkkenrulle", "deodorant", "barberskum"],
-  "Snacks": ["chips", "chokolade", "slik", "nødder", "popcorn", "kiks", "lakrids", "vingummi", "mandler"]
-};
-
-// Function to determine product category based on description
-function determineCategory(description: string): string {
-  // Convert description to lowercase for case-insensitive matching
-  const lowerDesc = description.toLowerCase();
-  
-  // Check each category's keywords
-  for (const [category, keywords] of Object.entries(categoryKeywords)) {
-    if (keywords.some(keyword => lowerDesc.includes(keyword))) {
-      return category;
-    }
-  }
-  
-  // If no category matches, return empty string
-  return "";
-}
 
 function SearchPage() {
   const [products, setProducts] = useState<SallingResponse>([]);
@@ -141,14 +107,10 @@ function SearchPage() {
             <span className="font-normal">- {p.store.address.street}</span>
           </Typography>
           <div className="flex overflow-x-auto gap-2">
-            {p.clearances.map(({ offer, product }) => (
+            {p.clearances.map((p) => (
               <ProductCard
-                key={product.description}
-                productName={product.description}
-                imageUrl={product.image ?? ""}
-                originalPrice={offer.originalPrice}
-                currentPrice={offer.newPrice}
-                quantity={offer.stock}
+                key={p.product.ean}
+                product={p}
               />
             ))}
           </div>
