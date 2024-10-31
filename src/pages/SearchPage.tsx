@@ -6,8 +6,11 @@ import { SearchIcon } from "lucide-react";
 import ProductCard from "../components/Product/ProductCard";
 import { SallingResponse } from "../lib/types";
 import { getProducts } from "../lib/api/salling";
+import { Link } from "react-router-dom";
 import { categoryKeywords } from "../lib/keywords/category-keywords";
 import { determineCategory } from "../lib/utils";
+import { useStore } from "../stores/useStore";
+
 
 const filters = [
   "Alle",
@@ -22,11 +25,13 @@ const filters = [
 ];
 
 
+
 function SearchPage() {
   const [products, setProducts] = useState<SallingResponse>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProducts, setFilteredProducts] = useState<SallingResponse>([]);
   const [selectedCategory, setSelectedCategory] = useState("Alle");
+  const { setCurrentStore, setProducts:setStoreProducts} = useStore()
 
   useEffect(() => {
     (async function () {
@@ -102,10 +107,18 @@ function SearchPage() {
       </div>
       {Array.isArray(filteredProducts) && filteredProducts?.map((p, index) => (
         <section key={p.store.brand + index} className="px-6 py-4">
+          <Link onClick={() => {
+            setCurrentStore(p.store);
+            setStoreProducts(p.clearances);
+          }}
+          to={{
+            pathname: `/store/${encodeURIComponent(p.store.brand)}`,
+          }}>
           <Typography className="first-letter:uppercase" variant="heading">
             {p.store.brand}{" "}
             <span className="font-normal">- {p.store.address.street}</span>
           </Typography>
+          </Link>
           <div className="flex overflow-x-auto gap-2">
             {p.clearances.map((p) => (
               <ProductCard
