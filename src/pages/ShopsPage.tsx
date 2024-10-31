@@ -8,6 +8,7 @@ import { useFavoriteStores } from "../hooks/useFavoriteStores";
 
 function ShopsPage() {
   const [products, setProducts] = useState<SallingResponse>([]);
+  const [currentFavoriteIndex, setCurrentFavoriteIndex] = useState(0);
   const { favorites, toggleFavorite, isFavorite } = useFavoriteStores();
 
   useEffect(() => {
@@ -40,32 +41,57 @@ function ShopsPage() {
     }
   };
 
+  // Reset currentFavoriteIndex if it's out of bounds after removing a favorite
+  useEffect(() => {
+    if (currentFavoriteIndex >= favoriteStores.length && favoriteStores.length > 0) {
+      setCurrentFavoriteIndex(favoriteStores.length - 1);
+    }
+  }, [favoriteStores.length]);
+
   return (
     <div className="p-6">
       <Typography variant="heading">Mine Butikker</Typography>
-      <div className="slideshow-container">
+      <div className="slideshow-container relative">
         {favoriteStores.length > 0 ? (
-          favoriteStores.map(({ store, clearances }) => (
+          <>
             <StoreCard
-              key={store.address.street}
-              store={store}
-              logoUrl={getLogoUrl(store.brand)} // Use the function to get the logo URL
+              key={favoriteStores[currentFavoriteIndex].store.address.street}
+              store={favoriteStores[currentFavoriteIndex].store}
+              logoUrl={getLogoUrl(favoriteStores[currentFavoriteIndex].store.brand)}
               showAmountOnly={true}
-              isFavorite={isFavorite(store.address.street)}
-              onToggleFavorite={() => toggleFavorite(store.address.street)}
-              products={clearances}
+              isFavorite={isFavorite(favoriteStores[currentFavoriteIndex].store.address.street)}
+              onToggleFavorite={() => toggleFavorite(favoriteStores[currentFavoriteIndex].store.address.street)}
+              products={favoriteStores[currentFavoriteIndex].clearances}
             />
-          ))
+            
+            {/* Dot navigation */}
+            {favoriteStores.length > 1 && (
+              <div className="dot-container mt-4">
+                <div className="dot-navigation flex justify-center gap-2">
+                  {favoriteStores.map((_, index) => (
+                    <span
+                      key={index}
+                      className={`dot inline-block w-3 h-3 rounded-full cursor-pointer transition-all duration-300 ${
+                        currentFavoriteIndex === index ? "bg-primary-dark" : "bg-[#14B7A5]"
+                      }`}
+                      onClick={() => setCurrentFavoriteIndex(index)}
+                    ></span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </>
         ) : (
           <EmptyFavorites />
         )}
       </div>
+
       <Typography variant="heading">Forslåede Butikker</Typography>
       {products?.map(({ store, clearances }) => (
         <StoreCard
           key={store.address.street}
           store={store}
-          logoUrl={getLogoUrl(store.brand)} // Use the function to get the logo URL
+          logoUrl={getLogoUrl(store.brand)}
           showAmountOnly={false}
           isFavorite={isFavorite(store.address.street)}
           onToggleFavorite={() => toggleFavorite(store.address.street)}
