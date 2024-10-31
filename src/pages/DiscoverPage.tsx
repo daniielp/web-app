@@ -22,13 +22,14 @@ export default function DiscoverPage() {
   return (
     <div className="p-6 flex flex-col gap-4">
       <Typography variant="heading">Butikker nær dig</Typography>
-      <div className="slideshow-container">
-        {products.map(({ store, clearances }) => (
+      <div className="slideshow-container relative">
+        {products.length > 0 && (
           <Link
-            to={`/store/${store.brand}`}
+            className="block"
+            to={`/store/${products[currentIndex].store.brand}`}
             onClick={() => {
-              setStoreProducts(clearances);
-              setCurrentStore(store);
+              setStoreProducts(products[currentIndex].clearances);
+              setCurrentStore(products[currentIndex].store);
             }}
           >
             <ShopCard
@@ -38,7 +39,7 @@ export default function DiscoverPage() {
               closesAt={"24:00"}
             />
           </Link>
-        ))}
+        )}
 
         <div className="dot-container">
           <div className="dot-navigation flex justify-center gap-2">

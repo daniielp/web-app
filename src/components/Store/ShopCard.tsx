@@ -37,7 +37,7 @@ function ShopCard({
       )}
       {...props}
     >
-      <Typography variant="heading">
+      <Typography variant="heading" className="first-letter:capitalize"> 
         {shopName}{' '}
         {shopAddress && (
           <span className="font-normal text-base">- {shopAddress}</span>
