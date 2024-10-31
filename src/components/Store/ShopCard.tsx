@@ -112,7 +112,7 @@ function ShopCard({
       )}
       {showFavoritButten && (
         <button className="absolute top-4 right-4" onClick={toggleFavorite}>
-          <StoreFavorit isFavorite={isFavorite} />
+          <StoreFavorit onToggle={false} isFavorite={isFavorite} />
         </button>
       )}
     </div>

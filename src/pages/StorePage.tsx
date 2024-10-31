@@ -1,6 +1,6 @@
 import { useLocation, useParams } from 'react-router-dom';
 import Typography from "../components/Typography";
-import ProductCard from "../components/Product/ProductCard";
+import ProductCard, { ProductCardProps } from "../components/Product/ProductCard";
 import ShopCard from "../components/Store/ShopCard";
 import MissingProduct from "../components/Product/MissingProduct";
 
@@ -53,17 +53,19 @@ function StorePage() {
   } = state || {};
 
   // Group products by category
-  const categorizedProducts = categories.reduce((acc, category) => {
-    acc[category] = products.filter(product => determineCategory(product.productName) === category);
+  const categorizedProducts = categories.reduce<Record<string, ProductCardProps[]>>((acc, category) => {
+    acc[category] = products.filter((product: ProductCardProps) => 
+      determineCategory(product.productName) === category
+    );
     return acc;
-  }, {} as Record<string, typeof products>);
+  }, {});
 
   return (
     <main>
       <ShopCard
         className="rounded-none min-h-40"
         shopName={shopName}
-        address={address}
+        shopAddress={address}
         opensAt={opensAt}
         closesAt={closesAt}
         showBackButten={true}
