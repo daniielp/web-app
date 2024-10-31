@@ -14,3 +14,16 @@ export const determineCategory = (description: string) => {
   }
   return "Unknown";
 };
+
+export const getLogoUrl = (shopName: string) => {
+  switch (shopName.toLowerCase()) {
+    case "netto":
+      return "../netto-logo.png";
+    case "bilka":
+      return "../bilka-logo.png";
+    case "foetex":
+      return "../foetex-logo.png";
+    default:
+      return ""; // Default case if no match is found
+  }
+};
