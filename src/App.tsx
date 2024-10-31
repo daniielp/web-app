@@ -6,7 +6,6 @@ import {
   Navigate,
 } from "react-router-dom";
 import "./App.css";
-import DiscoverPage from "./pages/DiscoverPage";
 import ShopsPage from "./pages/ShopsPage";
 import SearchPage from "./pages/SearchPage";
 import ProfilePage from "./pages/ProfilePage";
@@ -14,6 +13,7 @@ import SiteNavigation from "./components/SiteNavigation";
 
 import SiteHeader from "./components/SiteHeader";
 import StorePage from "./pages/StorePage";
+import DiscoverPage from "./pages/DiscoverPage";
 
 function App() {
   return (
@@ -22,7 +22,6 @@ function App() {
         <SiteHeader />
         <Routes>
           <Route path="/" element={<DiscoverPage />} />
-          <Route path="/shops/:id" element={<StorePage />} />
           <Route path="/store/:shopName" element={<StorePage />} />
           <Route path="/shops" element={<ShopsPage />} />
           <Route path="/search" element={<SearchPage />} />

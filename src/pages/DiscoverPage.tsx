@@ -1,40 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Typography from "../components/Typography";
 import ShopCard from "../components/Store/ShopCard";
 import ProductCard from "../components/Product/ProductCard";
+import { getProducts } from "../lib/api/salling";
+import { SallingResponse } from "../lib/types";
+import { Link } from "react-router-dom";
 
 function DiscoverPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [products, setProducts] = useState<SallingResponse>([]);
 
-  const shops = [
-    {
-      name: "Netto",
-      address: "Frederiks allé",
-      opensAt: "07:30",
-      closesAt: "20:30",
-    },
-    {
-      name: "SuperBrugsen",
-      address: "Hovedgaden",
-      opensAt: "08:00",
-      closesAt: "21:00",
-    },
-    { name: "Fakta", address: "Bredgade", opensAt: "07:00", closesAt: "22:00" },
-  ];
+  useEffect(() => {
+    (async function () {
+      const res = await getProducts();
+      setProducts(res);
+    })();
+  }, []);
 
   return (
     <div className="p-6 flex flex-col gap-4">
       <Typography variant="heading">Butikker nær dig</Typography>
       <div className="slideshow-container">
-        <ShopCard
-          shopName={shops[currentIndex].name}
-          address={shops[currentIndex].address}
-          opensAt={shops[currentIndex].opensAt}
-          closesAt={shops[currentIndex].closesAt}
-        />
+        {products.map(({ store, clearances }) => (
+          <Link to="/shops">
+            <ShopCard
+              shopName={store.brand}
+              shopAddress={store.address.street}
+              opensAt={"12:00"}
+              closesAt={"24:00"}
+            />
+          </Link>
+        ))}
+
         <div className="dot-container">
           <div className="dot-navigation">
-            {shops.map((_, index) => (
+            {products.map((_, index) => (
               <span
                 key={index}
                 className={`dot ${currentIndex === index ? "active" : ""}`}
@@ -72,9 +72,9 @@ function DiscoverPage() {
       </div>
 
       <div className="bg-primary-dark text-white min-h-32 w-full flex flex-row justify-center items-center gap-1 p-2 rounded-2xl my-6">
-      <Typography variant="heading">Gør</Typography>
-      <img className="w-20" src="/kaal.png" alt="Kål" />
-      <Typography variant="heading">på madspild!</Typography>
+        <Typography variant="heading">Gør</Typography>
+        <img className="w-20" src="/kaal.png" alt="Kål" />
+        <Typography variant="heading">på madspild!</Typography>
       </div>
     </div>
   );

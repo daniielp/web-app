@@ -143,7 +143,7 @@ function ShopsPage() {
               closesAt="20:30"
               logoUrl={getLogoUrl(store.brand)} // Use the function to get the logo URL
               showAmountOnly={true}
-              isFavorite={true}
+              isFavorite={isFavorite(store.address.street)}
               onToggleFavorite={() => toggleFavorite(store.address.street)}
               products={clearances.map(({ offer, product }) => ({
                 productName: product.description,
