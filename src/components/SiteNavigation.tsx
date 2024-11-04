@@ -34,7 +34,7 @@ function SiteNavigation() {
         <NavLink
           to={item.href}
           className={({ isActive }) =>
-            cn("flex flex-col justify-center items-center text-primary", isActive ? "text-primary-dark" : "")
+            cn("flex flex-col justify-center items-center text-primary", isActive ? "text-primary-dark *:fill-primary" : "")
           }
         >
           {item.icon}
