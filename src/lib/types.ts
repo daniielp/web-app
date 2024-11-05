@@ -1,3 +1,4 @@
+// Made by: Daniiel
 export type SallingResponse = Array<{
   clearances: Array<{
     offer: {
