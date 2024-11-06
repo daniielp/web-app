@@ -1,3 +1,4 @@
+// Made by: Daniel og jakob
 import React, { useEffect, useState } from "react";
 import Typography from "../components/Typography";
 import { ToggleGroup, ToggleGroupItem } from "../components/ToggleGroup";

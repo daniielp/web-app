@@ -1,3 +1,4 @@
+// Made by: Daniel
 import { create } from "zustand";
 import type { SallingResponse } from "../lib/types";
 

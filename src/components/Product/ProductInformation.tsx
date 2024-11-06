@@ -1,3 +1,4 @@
+// Made by: Daniel
 import React from "react";
 import type { ProductCardProps } from "./ProductCard";
 import Typography from "../Typography";

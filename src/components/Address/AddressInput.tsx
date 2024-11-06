@@ -1,3 +1,4 @@
+// Made by: Daniel
 import React, { useEffect, useState } from "react";
 import { ChevronsUpDown, Check } from "lucide-react";
 import {
@@ -26,8 +27,6 @@ function AddressInput() {
     (async function () {
       const res = await getAddresses(searchValue);
       setAdresses(res);
-
-      // ...
     })();
   }, [searchValue]);
 

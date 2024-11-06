@@ -1,3 +1,4 @@
+// Made by: Daniel
 import React from "react";
 import Typography from "../Typography";
 import { cn } from "../../lib/utils";

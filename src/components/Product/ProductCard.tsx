@@ -1,3 +1,4 @@
+// Made by: Daniel
 import React from "react";
 import { Drawer, DrawerContent, DrawerTrigger } from "../Drawer";
 import ProductInformation from "./ProductInformation";

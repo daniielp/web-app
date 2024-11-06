@@ -1,3 +1,4 @@
+// Made by: Anders
 import { useState, useEffect } from 'react';
 
 export function useFavoriteStores() {

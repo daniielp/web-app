@@ -1,3 +1,4 @@
+// Made by: Daniel
 import { HomeIcon, SearchIcon, StoreIcon, UserIcon } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
