@@ -1,6 +1,7 @@
 import React from 'react'
 import Typography from "../Typography";
 
+/* LAVET Af Jakob */
 
 function ProfileFront() {
   return (

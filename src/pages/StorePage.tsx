@@ -6,7 +6,7 @@ import { categories } from "../lib/keywords/category-keywords";
 import Typography from "../components/Typography";
 import { determineCategory } from "../lib/utils";
 import { useMemo } from "react";
-
+/* Lavet af Jakob */
 function StorePage() {
   const { currentStore, products } = useStore();
 

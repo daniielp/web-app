@@ -19,7 +19,6 @@ function Preference() {
             <Typography variant={'subHeading'} >Økologi</Typography>
             <Typography variant={'caption'} >Når denne er aktiv vil vi kun lede efter økologiske produkter.</Typography>
             </div>
-            
             <Switch />
         </div>
         <div className='PrefSwitch'>
@@ -27,7 +26,6 @@ function Preference() {
             <Typography variant={'subHeading'} >Dyrevelfærd</Typography>
             <Typography variant={'caption'} >Når denne er aktiv vil vi kun lede efter produkter der tager højde for dyrevelfærd.</Typography>
             </div>  
-            <p></p>
             <Switch />
         </div>
         <div className='PrefSwitch'>
