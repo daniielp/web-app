@@ -27,7 +27,6 @@ function ShopsPage() {
     favorites.includes(store.address.street)
   );
 
-  // Function to get the logo URL based on the shop name
   const getLogoUrl = (shopName: string) => {
     switch (shopName.toLowerCase()) {
       case "netto":
@@ -37,11 +36,10 @@ function ShopsPage() {
       case "foetex":
         return "../foetex-logo.png";
       default:
-        return ""; // Default case if no match is found
+        return "";
     }
   };
 
-  // Reset currentFavoriteIndex if it's out of bounds after removing a favorite
   useEffect(() => {
     if (currentFavoriteIndex >= favoriteStores.length && favoriteStores.length > 0) {
       setCurrentFavoriteIndex(favoriteStores.length - 1);
