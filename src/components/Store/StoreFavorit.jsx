@@ -1,3 +1,4 @@
+/* Lavet af Anders */
 import React from 'react';
 
 function StoreFavorit({ isFavorite, onToggle }) {

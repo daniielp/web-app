@@ -1,3 +1,4 @@
+/* Lavet af Jakob */
 export const categories = ["Kød", "Mejeri", "Fisk", "Frugt & Grønt", "Frost", "Brød", "None Food", "Snacks"];
 
 export const categoryKeywords = {
