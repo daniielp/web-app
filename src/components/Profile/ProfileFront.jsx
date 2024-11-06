@@ -1,5 +1,6 @@
 import React from 'react'
 import Typography from "../Typography";
+import { ChevronRight } from 'lucide-react';
 
 /* LAVET Af Jakob */
 
@@ -12,7 +13,7 @@ function ProfileFront() {
         <Typography className='leading-1' variant={'caption'} >Ret adgangskode, sikkerhed, personlige oplysninger</Typography>
             
         </div>
-        <img className='FrontArrow' src="/Chevron-right.svg" alt="Profile Picture" />
+        <ChevronRight className='w-24 h-20 text-primary ' />
     </div>
   )
 }
