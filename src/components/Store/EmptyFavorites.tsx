@@ -1,3 +1,4 @@
+/*Skrevet af Anders */
 import Typography from "../Typography";
 
 function EmptyFavorites() {

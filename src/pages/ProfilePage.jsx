@@ -1,3 +1,4 @@
+/* Lavet af Jakob */
 import React from 'react'
 import Preference from '../components/Profile/Preference'
 import { Input } from "../components/Input"

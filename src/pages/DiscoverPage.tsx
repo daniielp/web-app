@@ -1,3 +1,4 @@
+/* Lavet af Anders */
 import { useEffect, useState } from "react";
 import Typography from "../components/Typography";
 import ShopCard from "../components/Store/ShopCard";

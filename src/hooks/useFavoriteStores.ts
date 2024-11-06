@@ -5,7 +5,6 @@ export function useFavoriteStores() {
   const [favorites, setFavorites] = useState<string[]>([]);
 
   useEffect(() => {
-    // Load favorites from localStorage on mount
     const storedFavorites = localStorage.getItem('favoriteStores');
     if (storedFavorites) {
       setFavorites(JSON.parse(storedFavorites));
@@ -18,7 +17,6 @@ export function useFavoriteStores() {
         ? prev.filter(storedAddress => storedAddress !== address)
         : [...prev, address];
       
-      // Save to localStorage
       localStorage.setItem('favoriteStores', JSON.stringify(newFavorites));
       return newFavorites;
     });

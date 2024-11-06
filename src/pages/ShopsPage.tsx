@@ -1,3 +1,4 @@
+/* Lavet af Anders */
 import { useState, useEffect } from "react";
 import StoreCard from "../components/Store/StoreCard";
 import EmptyFavorites from "../components/Store/EmptyFavorites";
