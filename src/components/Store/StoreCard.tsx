@@ -1,3 +1,4 @@
+/* Strevet af Anders*/
 import Typography from "../Typography";
 import { cn, getLogoUrl } from "../../lib/utils";
 import StoreFavorit from "./StoreFavorit";
