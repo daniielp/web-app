@@ -76,7 +76,7 @@ function ProductInformation({
           <div className="bg-[#D4AA78] text-white min-h-32 w-full flex flex-col justify-center items-center gap-1 p-4 rounded-2xl">
             <Typography variant="caption">Valdemarsro</Typography>
             <Typography variant="heading">FÅ HJÆLP TIL MADEN</Typography>
-            <a href="/#" className="bg-[#9A4A0B] p-2 py-1 rounded-lg" >Find opskrifter med råvareren</a>
+            <a href="/https://www.valdemarsro.dk/soeg/" className="bg-[#9A4A0B] p-2 py-1 rounded-lg" >Find opskrifter med råvareren</a>
           </div>
         </div>
       </div>
